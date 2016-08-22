@@ -1,8 +1,11 @@
-This is a Python package for sentry, an addon for `Websauna framework <https://websauna.org>`_.
+This is a Python package for websauna.sentry addon for `Websauna framework <https://websauna.org>`_.
 
-To run this package you need Python 3.4+, PostgresSQL and Redis.
+Features
+========
 
-Based on `pyramid_raven <https://github.com/thruflo/pyramid_raven>`_.
+* Extra logging context like user email and country
+
+* Internally uses `pyramid_raven <https://github.com/thruflo/pyramid_raven>`_.
 
 Installation
 ============
@@ -52,7 +55,7 @@ In your ``production.ini`` settings configure::
 
     [handler_sentry]
     class = raven.handlers.logging.SentryHandler
-    args = ('https://9e881a29d41142e483e41fba62050ccd:a61b30d8871c44948db57de377d5ff5f@sentry.csx.online/2?verify_ssl=0&timeout=30',)
+    args = ('https://x:a61b30d8871c44948db57de377d5ff5f@sentry.example.com/2?verify_ssl=0&timeout=30',)
     level = WARNING
     formatter =
 
@@ -69,7 +72,7 @@ For Raven client options (URL parameters) see
 Usage
 =====
 
-Test in production by going to URL::
+Test in production by going to the Websauna internal error trigger URL::
 
     http://yoursite.example.com/error-trigger
 
@@ -77,7 +80,7 @@ Or on local development::
 
     http://localhost:6543/error-trigger
 
-This will trigger test exception and logging messages you should see in sentry.
+This will trigger test exception and logging messages you should see in Sentry.
 
 Extra logging context
 ---------------------
@@ -102,33 +105,6 @@ More information
 
 * https://docs.sentry.io/hosted/clients/python/integrations/logging/
 
-Running the development website
-===============================
-
-Local development machine
--------------------------
-
-Example (OSX / Homebrew)::
-
-    psql create sentry_dev
-    ws-sync-db websauna/sentry/conf/development.ini
-    ws-pserve websauna/sentry/conf/development.ini --reload
-
-Running the test suite
-======================
-
-First create test database::
-
-    # Create database used for unit testing
-    psql create sentry_test
-
-Install test and dev dependencies (run in the folder with ``setup.py``)::
-
-    pip install -e ".[dev,test]"
-
-Run test suite using py.test running::
-
-    py.test
 
 More information
 ================

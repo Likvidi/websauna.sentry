@@ -7,6 +7,9 @@ Features
 
 * Internally uses `pyramid_raven <https://github.com/thruflo/pyramid_raven>`_.
 
+.. image:: https://raw.githubusercontent.com/websauna/websauna.sentry/master/screenshots/user_context.png
+    :width: 640px;
+
 Installation
 ============
 

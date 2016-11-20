@@ -45,7 +45,6 @@ In your ``production.ini`` settings configure::
     # Logger configuration
     #
 
-
     # Also add Sentry to normal Python logging configuration, so you catch
     # warns and errors from loggers.
     [handlers]
@@ -108,6 +107,21 @@ More information
 
 * https://docs.sentry.io/hosted/clients/python/integrations/logging/
 
+Troubleshooting
+===============
+
+Celery reflect issue::
+
+    [loggers]
+    keys = root, sqlalchemy, celery_worker_job, colander, notebook, authomatic, celery_redirected
+
+    # Raven logger creating log entries itself when celery does stdout capture -> infinite loop
+    # b'[\'b"[\\\'Could not acquire lock on testnet when doing update_networks \\\']" \']'
+    [logger_celery_redirected]
+    level = INFO
+    # No sentry
+    handlers = logfile
+    qualname = celery.redirected
 
 More information
 ================

@@ -18,6 +18,7 @@ if len(sys.argv) >= 2:
 
 
 setup(name='websauna.sentry',
+      namespace_packages=['websauna'],
       version='0.0',
       description='Sentry integration for Websauna',
       long_description=README + '\n\n' + CHANGES,
